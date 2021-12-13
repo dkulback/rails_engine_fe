@@ -4,10 +4,10 @@ Congratulations! You've written your first API. Just like the API you consumed f
 
 ## Setup
 
-Just like your week 1 project, this will be a new Rails app. You can either pull this repo and pick up at The Challenge section below, or start completely from scratch. This will NOT be an API, so do not use the `-api` flag if you decide to start from scratch.
+Just like your week 1 project, this will be a new Rails app. You can either fork this repo and pick up at The Challenge section below, or start completely from scratch. This will NOT be an API, so do not use the `-api` flag if you decide to start from scratch.
 
 ```sh
-rails new rails_engine_fe -T -d postgresql
+rails _5.2.6_ new rails_engine_fe -T -d postgresql
 cd rails_engine_fe
 bundle
 bundle exec rake db:create
