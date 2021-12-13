@@ -4,23 +4,16 @@ Congratulations! You've written your first API. Just like the API you consumed f
 
 ## Setup
 
-Just like your week 1 project, this will be a new Rails app. You can either fork this repo and pick up at The Challenge section below, or start completely from scratch. This will NOT be an API, so do not use the `-api` flag if you decide to start from scratch.
+Just like your week 1 project, this will be a new Rails app. You should fork this repository. 
 
 ```sh
-rails _5.2.6_ new rails_engine_fe -T -d postgresql
+git clone <Rails Engine FE SSH>
 cd rails_engine_fe
 bundle
 bundle exec rake db:create
 ```
 
-Add gem 'rspec-rails' and gem 'capybara' to your :development, :test block in your Gemfile.
-
-```sh
-bundle
-rails g rspec:install
-```
-
-In `/config/puma.rb`, change the port 3000 to 5000. This should be on or around line 12.
+In `/config/puma.rb`, you'll notice that the port has changed from 3000 to 5000. This should be on or around line 12.
 
 We do this because Rails Engine is not in production or hosted somewhere other than localhost. If Rails Engine is running on port 3000, our front end will need to have a different port so they can run at the same time. Now, when we do `rails s`, our front end application will automatically use port 5000. You can also do this manually every time you start your server by passing the port number with a `-p` flag like so:
 `rails s -p 5000`. You should see that your server is "listening on tcp://localhost:5000" now instead of the usual 3000.
