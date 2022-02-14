@@ -16,4 +16,21 @@ RSpec.describe MerchantClient do
       end
     end
   end
+  describe '::get_items' do
+    it 'returns a response of items' do
+      VCR.use_cassette('merchant_items') do
+        items = client.get_items(1)
+        expect(items).to be_a Hash
+        expect(items[:data]).to be_a Array
+      end
+    end
+  end
+  describe '::get_merchant' do
+    it 'returns a response of items' do
+      VCR.use_cassette('merchant') do
+        merchant = client.get_merchant(1)
+        expect(merchant).to be_a Hash
+      end
+    end
+  end
 end
