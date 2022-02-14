@@ -1,0 +1,9 @@
+<div class= 'merchants'>
+<h2> Merchants </h2>
+<% @merchants.each do |merchant|  %>
+  <%= link_to merchant.name, merchant_path(merchant.id), method: :get %>
+<% end %>
+</div>
+
+
+

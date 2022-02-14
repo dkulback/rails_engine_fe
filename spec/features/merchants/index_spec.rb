@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Merchants Index' do
   it 'displays all the merchants' do
-    VCR.use_cassette('merchants') do
+    VCR.use_cassette('merchants_index') do
       visit merchants_path
 
       within '.merchants' do
@@ -11,7 +11,7 @@ RSpec.describe 'Merchants Index' do
 
         click_link 'Schroeder-Jerde'
 
-        expect(current_path).to eq(merchant_path(2))
+        expect(current_path).to eq(merchant_path(1))
       end
     end
   end

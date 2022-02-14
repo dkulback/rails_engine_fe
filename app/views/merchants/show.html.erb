@@ -1,0 +1,13 @@
+<div class= "merchant">
+  <h1>Merchant: <%= @merchant.name %></h1>
+</div>
+<div class= 'items'>
+  <h1> Items! </h1>
+
+  <ol>
+ <% @items.each do |item|  %>
+   <li> <%= item.name %></li>
+<% end %>
+
+  </ol>
+</div>
