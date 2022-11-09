@@ -33,4 +33,20 @@ RSpec.describe MerchantClient do
       end
     end
   end
+  describe '::search_merchant' do
+    it 'returns a response of merchants matching the search query' do
+      VCR.use_cassette('merchant_search') do
+        merchant = client.search_merchant('hand')
+
+        expect(merchant).to be_a Hash
+        expect(merchant).to have_key(:data)
+        expect(merchant[:data]).to be_a(Array)
+        expect(merchant[:data][0]).to be_a Hash
+        expect(merchant[:data][0][:type]).to eq('merchant')
+        expect(merchant[:data][0][:attributes]).to be_a Hash
+        expect(merchant[:data][0][:attributes][:id]).to be_a Integer
+        expect(merchant[:data][0][:attributes][:name]).to be_a String
+      end
+    end
+  end
 end

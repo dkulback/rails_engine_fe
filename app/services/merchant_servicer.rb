@@ -18,4 +18,10 @@ class MerchantServicer
       Item.new(item)
     end
   end
+
+  def self.search(query)
+    client.search_merchant(query)[:data].map do |data|
+      Merchant.new(data)
+    end
+  end
 end

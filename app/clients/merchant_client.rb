@@ -1,12 +1,11 @@
 class MerchantClient
   def self.get_url(url, query = nil)
     conn = Faraday.new(url: 'http://localhost:3000') do |faraday|
-      faraday.params[:query] = query unless query.nil?
+      faraday.params[:name] = query unless query.nil?
     end
 
     response = conn.get(url)
-
-    data = JSON.parse(response.body, symbolize_names: true)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def self.get_merchants
@@ -19,5 +18,9 @@ class MerchantClient
 
   def self.get_merchant(id)
     get_url("/api/v1/merchants/#{id}")
+  end
+
+  def self.search_merchant(query)
+    get_url('/api/v1/merchants/find', query)
   end
 end

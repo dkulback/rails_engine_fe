@@ -29,4 +29,14 @@ RSpec.describe MerchantServicer do
       end
     end
   end
+  describe '::search/1' do
+    it 'returns a list of merchants' do
+      VCR.use_cassette('merchant_search') do
+        actual = servicer.search('hand')
+        expected = Array
+        expect(actual).to be_a(expected)
+        expect(actual[0]).to be_a(Merchant)
+      end
+    end
+  end
 end
