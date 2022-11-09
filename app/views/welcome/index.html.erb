@@ -1,0 +1,23 @@
+<div class='page-links'>
+  <a href=<%=items_path%>>Browse All Items</a>
+  <a href=<%=merchants_path%>>Browse All Merchants</a>
+  <a href=<%=items_path%>>Browse Popular Items</a>
+  <a href=<%=items_path%>>Browse Popular Merchants</a>
+  <div class='merchant-search'>
+    <%= form_with url: search_merchants_path, method: :get, local: true do |form| %>
+      <div class="form-group">
+        <%= form.text_field :search, value: 'Search..', id: "m-search" %>
+        <%= form.label :search, 'Search Merchants', class: "form-check-label" %>
+        <%= form.submit 'Submit' %>
+      </div>
+    <% end %>
+  </div>
+  <div class='item-search'>
+    <%= form_with url: search_items_path, method: :get, local: true do |form| %>
+      <div class="form-group">
+        <%= form.text_field :search, value: 'Search..', id: "i-search" %>
+        <%= form.label :search, 'Search Items', class: "form-check-label" %>
+        <%= form.submit 'Submit' %>
+      </div>
+    <% end %>
+  </div>
