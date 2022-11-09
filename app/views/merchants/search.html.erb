@@ -1,0 +1,13 @@
+<div class= 'merchants'>
+  <% if @merchants.count > 0 %>
+    <h5> We found the following merchants</h5>
+    <% @merchants.each do |merchant|  %>
+      <%= link_to merchant.name, merchant_path(merchant.id), method: :get %>
+    <% end %>
+  <% else %>
+    <h6>No merchants found</h6>
+  <%end%>
+</div>
+
+
+
