@@ -16,13 +16,20 @@ RSpec.describe 'application welcome page' do
         expect(page).to have_content('Search Merchants')
         fill_in 'm-search', with: 'Bill'
         click_on 'Submit'
-        expect(current_path).to eq(merchants_search_path)
+        expect(current_path).to eq(search_merchants_path)
       end
-
-      within '.item-search' do
-        expect(page).to have_content('Search Items')
-        fill_in 'i-search', with: 'Baseball'
-        expect(current_path).to eq(items_search_path)
+    end
+  end
+  describe 'items search' do
+    it 'routes to to items search page' do
+      VCR.use_cassette('item_search_route') do
+        visit root_path
+        within '.item-search' do
+          expect(page).to have_content('Search Items')
+          fill_in 'i-search', with: 'Baseball'
+          click_on 'Submit'
+          expect(current_path).to eq(search_items_path)
+        end
       end
     end
   end
