@@ -1,0 +1,13 @@
+<div class= 'items'>
+  <% if @items.count > 0 %>
+    <h5> We found the following items</h5>
+    <% @items.each do |item|  %>
+      <%= link_to item.name, item_path(item.id), method: :get %>
+    <% end %>
+  <% else %>
+    <h6>No items found</h6>
+  <%end%>
+</div>
+
+
+
