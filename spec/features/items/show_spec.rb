@@ -9,6 +9,11 @@ RSpec.describe 'item show page' do
         expect(page).to have_content('Item: Item Nemo Facere')
         expect(page).to have_content('description: Sunt eum id eius magni consequuntur delectus veritatis. Quisquam laborum illo ut ab. Ducimus in est id voluptas autem.')
         expect(page).to have_content('cost: $42.91')
+        expect(page).to have_link('Schroeder-Jerde')
+
+        click_link 'Schroeder-Jerde'
+
+        expect(current_path).to eq(merchant_path(1))
       end
     end
   end
