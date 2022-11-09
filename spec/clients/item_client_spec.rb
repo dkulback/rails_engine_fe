@@ -27,4 +27,20 @@ RSpec.describe ItemClient do
       end
     end
   end
+  describe '::search_merchant' do
+    it 'returns a response of merchants matching the search query' do
+      VCR.use_cassette('item_search') do
+        item = client.search('non')
+
+        expect(item).to be_a Hash
+        expect(item).to have_key(:data)
+        expect(item[:data]).to be_a(Array)
+        expect(item[:data][0]).to be_a Hash
+        expect(item[:data][0][:type]).to eq('item')
+        expect(item[:data][0][:id]).to be_a String
+        expect(item[:data][0][:attributes]).to be_a Hash
+        expect(item[:data][0][:attributes][:name]).to be_a String
+      end
+    end
+  end
 end

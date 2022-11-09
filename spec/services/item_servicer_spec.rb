@@ -20,4 +20,14 @@ RSpec.describe ItemServicer do
       end
     end
   end
+  describe '::search/1' do
+    it 'returns a list of items' do
+      VCR.use_cassette('item_search') do
+        actual = servicer.search('non')
+        expected = Array
+        expect(actual).to be_a(expected)
+        expect(actual[0]).to be_a(Item)
+      end
+    end
+  end
 end

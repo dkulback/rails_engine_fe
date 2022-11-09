@@ -12,4 +12,10 @@ class ItemServicer
   def self.item(id)
     Item.new(client.get_item(id)[:data])
   end
+
+  def self.search(query)
+    client.search(query)[:data].map do |data|
+      Item.new(data)
+    end
+  end
 end
