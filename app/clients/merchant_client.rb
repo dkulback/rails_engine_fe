@@ -1,6 +1,6 @@
 class MerchantClient
   def self.get_url(url, query = nil)
-    conn = Faraday.new(url: 'http://localhost:3000') do |faraday|
+    conn = Faraday.new(url: 'https://rails-engine-be.herokuapp.com') do |faraday|
       faraday.params[:name] = query unless query.nil?
     end
 
